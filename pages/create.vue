@@ -6,7 +6,12 @@
 
 <script>
 export default {
-  name: "create"
+  name: "create",
+  head() {
+    return {
+      title: 'Create Event'
+    }
+  }
 }
 </script>
 
