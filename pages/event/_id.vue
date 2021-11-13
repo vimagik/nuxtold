@@ -1,10 +1,12 @@
 <template>
   <div>
-    <h1>Individual Event: #{{ this.$route.params.id }}</h1>
+    <h1>{{ event.title }}</h1>
   </div>
 </template>
 
 <script>
+import EventService from "@/services/EventService";
+
 export default {
   name: "event",
   head() {
@@ -23,6 +25,11 @@ export default {
     id() {
       return this.$route.params.id
     }
+  },
+  async asyncData(ctx) {
+    const response = await EventService.getEvent(ctx.params.id);
+    const event = response.data;
+    return {event}
   }
 }
 </script>
